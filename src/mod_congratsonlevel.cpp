@@ -277,7 +277,7 @@ public:
                     default:
                         break;
                 }
-                sWorld->SendServerMessage(SERVER_MSG_STRING, ss.str().c_str());
+                sWorldSessionMgr->SendServerMessage(SERVER_MSG_STRING, ss.str().c_str());
 
                 // Issue a raid warning to the player
                 std::ostringstream ss2;
