@@ -63,6 +63,7 @@ config file for quick modifications.
 
 */
 
+#include "WorldSessionMgr.h"
 #include "Configuration/Config.h"
 #include "ScriptMgr.h"
 #include "Player.h"
@@ -135,7 +136,7 @@ public:
     CongratsOnLevel() : PlayerScript("CongratsOnLevel") { }
 
     // Level Up Rewards
-    void OnLevelChanged(Player* player, uint8 oldLevel) override
+    void OnPlayerLevelChanged(Player* player, uint8 oldLevel) override
     {
         // If enabled...
         if (col.congratsEnable)
@@ -247,7 +248,7 @@ public:
                     default:
                         break;
                 }
-                sWorld->SendServerMessage(SERVER_MSG_STRING, ss.str().c_str());
+                sWorldSessionMgr->SendServerMessage(SERVER_MSG_STRING, ss.str().c_str());
             }
 
             // If level is defined, they hit a reward level.
